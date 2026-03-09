@@ -52,9 +52,9 @@ export default function WhyUsSection() {
                         }}
                     >
                         <div className="px-10 pt-12 pb-8 relative z-10">
-                            <h3 className="text-7xl font-extrabold text-white tracking-tight mb-3">90+</h3>
+                            <h3 className="text-7xl font-extrabold text-white tracking-tight mb-3">15+</h3>
                             <p className="text-lg text-teal-100 leading-snug pb-5 border-b border-teal-400/50">
-                                Highly Experienced Doctors &amp; Surgeons
+                                Different Services
                             </p>
                             <div className="mt-5 flex flex-wrap gap-2">
                                 <div className="border border-white/40 text-white bg-white/10 backdrop-blur-sm px-5 py-2 rounded-full text-sm font-medium">

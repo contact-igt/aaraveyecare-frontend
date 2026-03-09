@@ -17,6 +17,7 @@ export default function VideoTestimonials() {
     const [itemsPerView, setItemsPerView] = useState(3);
     const [trackIndex, setTrackIndex] = useState(total); // start in middle copy
     const [animated, setAnimated] = useState(true);
+    const [dragOffset, setDragOffset] = useState(0);
     const [playingIdx, setPlayingIdx] = useState(null);
     const [cardWidth, setCardWidth] = useState(0);
 
@@ -80,10 +81,45 @@ export default function VideoTestimonials() {
         setPlayingIdx(null);
     };
 
+    const isDragging = useRef(false);
+    const startX = useRef(0);
+    const currentX = useRef(0);
+
+    const handleDragStart = (e) => {
+        if (playingIdx !== null) return; // Don't drag while video is playing
+        isDragging.current = true;
+        startX.current = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
+        currentX.current = startX.current;
+        setAnimated(false);
+    };
+
+    const handleDragMove = (e) => {
+        if (!isDragging.current) return;
+        currentX.current = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
+        setDragOffset(startX.current - currentX.current);
+    };
+
+    const handleDragEnd = () => {
+        if (!isDragging.current) return;
+        isDragging.current = false;
+
+        const diff = startX.current - currentX.current;
+        const threshold = cardWidth * 0.2; // 20% of card width as threshold
+
+        setAnimated(true);
+        setDragOffset(0);
+
+        if (diff > threshold) {
+            next();
+        } else if (diff < -threshold) {
+            prev();
+        }
+    };
+
     const offsetPx = trackIndex * (cardWidth + GAP_PX);
 
     return (
-        <section className="py-20 bg-gray-100">
+        <section className="py-20 bg-gray-100 select-none">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
                 {/* Header */}
@@ -114,12 +150,22 @@ export default function VideoTestimonials() {
                 </div>
 
                 {/* Carousel */}
-                <div className="overflow-hidden" ref={containerRef}>
+                <div
+                    className="overflow-hidden touch-pan-y"
+                    ref={containerRef}
+                    onMouseDown={handleDragStart}
+                    onMouseMove={handleDragMove}
+                    onMouseUp={handleDragEnd}
+                    onMouseLeave={handleDragEnd}
+                    onTouchStart={handleDragStart}
+                    onTouchMove={handleDragMove}
+                    onTouchEnd={handleDragEnd}
+                >
                     <div
                         className="flex"
                         style={{
                             gap: `${GAP_PX}px`,
-                            transform: cardWidth > 0 ? `translateX(-${offsetPx}px)` : 'none',
+                            transform: cardWidth > 0 ? `translateX(-${offsetPx + dragOffset}px)` : 'none',
                             transition: animated ? 'transform 500ms cubic-bezier(0.4, 0, 0.2, 1)' : 'none',
                             willChange: 'transform',
                         }}
@@ -134,8 +180,12 @@ export default function VideoTestimonials() {
                             return (
                                 <div
                                     key={idx}
-                                    onClick={() => handlePlay(realIdx)}
-                                    className="flex-shrink-0 relative rounded-3xl overflow-hidden cursor-pointer group bg-black"
+                                    onClick={(e) => {
+                                        // Only handle play if we didn't just drag
+                                        const diff = Math.abs(startX.current - currentX.current);
+                                        if (diff < 5) handlePlay(realIdx);
+                                    }}
+                                    className="flex-shrink-0 relative rounded-3xl overflow-hidden cursor-grab active:cursor-grabbing group bg-black"
                                     style={{ width: cardWidth > 0 ? `${cardWidth}px` : `${100 / itemsPerView}%`, height: '520px' }}
                                 >
                                     {/* Video — only the middle copy gets refs for playback */}
