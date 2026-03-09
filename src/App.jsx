@@ -13,6 +13,8 @@ import AppointmentForm from './components/AppointmentForm';
 import Footer from './components/Footer';
 import FloatingActions from './components/FloatingActions';
 import ThankYou from './components/ThankYou';
+import { ModalProvider } from './context/ModalContext';
+import PopupForm from './components/PopupForm';
 
 function LandingPage() {
   return (
@@ -46,22 +48,27 @@ function LandingPage() {
 
 export default function App() {
   return (
-    <BrowserRouter>
-      <div className="min-h-screen bg-white text-gray-800 overflow-x-hidden">
-        {/* 1. Header */}
-        <Header />
+    <ModalProvider>
+      <BrowserRouter>
+        <div className="min-h-screen bg-white text-gray-800 overflow-x-hidden">
+          {/* 1. Header */}
+          <Header />
 
-        <Routes>
-          <Route path="/" element={<LandingPage />} />
-          <Route path="/thank-you" element={<ThankYou />} />
-        </Routes>
+          <Routes>
+            <Route path="/" element={<LandingPage />} />
+            <Route path="/thank-you" element={<ThankYou />} />
+          </Routes>
 
-        {/* 11. Footer */}
-        <Footer />
+          {/* 11. Footer */}
+          <Footer />
 
-        {/* Floating Action Buttons */}
-        <FloatingActions />
-      </div>
-    </BrowserRouter>
+          {/* Floating Action Buttons */}
+          <FloatingActions />
+
+          {/* Global Popup Form */}
+          <PopupForm />
+        </div>
+      </BrowserRouter>
+    </ModalProvider>
   );
 }

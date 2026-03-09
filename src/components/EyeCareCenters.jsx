@@ -1,5 +1,6 @@
 import React from 'react';
 import { MapPin, Phone, ArrowRight } from 'lucide-react';
+import { useModal } from '../context/ModalContext';
 
 const locations = [
     {
@@ -35,6 +36,7 @@ const locations = [
 ];
 
 export default function EyeCareCenters() {
+    const { openPopup } = useModal();
     return (
         <section className="py-20 bg-gray-50 border-t border-gray-100">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -68,12 +70,12 @@ export default function EyeCareCenters() {
 
                             <div className="flex flex-col gap-3 mt-6 pt-6 border-t border-gray-100">
                                 <div className="grid grid-cols-2 gap-3">
-                                    <a
-                                        href="#hero"
+                                    <button
+                                        onClick={openPopup}
                                         className="flex items-center justify-center gap-1.5 bg-teal-50 text-teal-700 hover:bg-teal-100 py-2.5 rounded-xl text-sm font-semibold transition-colors text-center"
                                     >
                                         Contact Us
-                                    </a>
+                                    </button>
                                     <a
                                         href={`tel:${loc.phone.replace(/\s+/g, '')}`}
                                         className="flex items-center justify-center gap-1.5 bg-teal-500 text-white hover:bg-teal-600 py-2.5 rounded-xl text-sm font-semibold transition-colors"
@@ -96,13 +98,13 @@ export default function EyeCareCenters() {
 
                 {/* CTA Row */}
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-12">
-                    <a
-                        href="#hero"
+                    <button
+                        onClick={openPopup}
                         className="inline-flex items-center gap-2 bg-teal-600 hover:bg-teal-700 text-white font-semibold px-8 py-3.5 rounded-full shadow-md transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5"
                     >
                         Book an Appointment
                         <ArrowRight className="h-4 w-4" />
-                    </a>
+                    </button>
                     <a
                         href="tel:+919082217175"
                         className="inline-flex items-center gap-2 border-2 border-teal-600 text-teal-700 hover:bg-teal-600 hover:text-white font-semibold px-8 py-3.5 rounded-full transition-all duration-300 hover:-translate-y-0.5"

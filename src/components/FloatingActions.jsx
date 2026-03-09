@@ -1,5 +1,6 @@
 import React from 'react';
 import { Phone, CalendarCheck, Calendar } from 'lucide-react';
+import { useModal } from '../context/ModalContext';
 
 const scrollToHero = () => {
     const hero = document.getElementById('hero');
@@ -8,6 +9,7 @@ const scrollToHero = () => {
 };
 
 export default function FloatingActions() {
+    const { openPopup } = useModal();
     return (
         <>
             {/* 1. Global Floating WhatsApp Icon — Bottom Right */}
@@ -38,7 +40,7 @@ export default function FloatingActions() {
                 </a>
 
                 <button
-                    onClick={scrollToHero}
+                    onClick={openPopup}
                     className="bg-teal-700 text-white p-3 rounded-l-lg shadow-lg hover:bg-teal-800 hover:pr-5 transition-all duration-300 flex justify-center"
                     aria-label="Book Appointment"
                 >
@@ -50,7 +52,7 @@ export default function FloatingActions() {
             <div className="fixed bottom-0 left-0 right-0 lg:hidden z-[100] bg-white/80 backdrop-blur-md border-t border-gray-100 p-3 shadow-[0_-4px_20px_rgba(0,0,0,0.1)]">
                 <div className="max-w-md mx-auto flex gap-3">
                     <button
-                        onClick={scrollToHero}
+                        onClick={openPopup}
                         className="flex-1 bg-teal-700 text-white py-3.5 rounded-xl font-bold flex items-center justify-center gap-2 shadow-lg active:scale-95 transition-transform"
                     >
                         <Calendar className="h-5 w-5" />

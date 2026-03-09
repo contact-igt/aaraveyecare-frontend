@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { Phone, Menu, X, Calendar } from 'lucide-react';
+import { useModal } from '../context/ModalContext';
 
 export default function Header() {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const { openPopup } = useModal();
 
     return (
         <header className="sticky top-0 z-50 bg-white shadow-sm">
@@ -26,13 +28,13 @@ export default function Header() {
                         </a>
 
                         {/* Book Appointment */}
-                        <a
-                            href="#hero"
+                        <button
+                            onClick={openPopup}
                             className="flex items-center gap-2 bg-teal-500 hover:bg-teal-600 text-white px-7 py-2.5 rounded-full font-medium transition-all duration-200 shadow-md"
                         >
                             <Calendar className="h-4 w-4" />
                             Book Appointment
-                        </a>
+                        </button>
                     </div>
 
                     {/* Mobile menu button */}
@@ -56,12 +58,15 @@ export default function Header() {
                     >
                         <Phone className="h-5 w-5" /> +91 90822 17175
                     </a>
-                    <a
-                        href="#hero"
+                    <button
+                        onClick={() => {
+                            setIsMobileMenuOpen(false);
+                            openPopup();
+                        }}
                         className="flex items-center justify-center gap-2 w-full bg-teal-500 text-white px-6 py-3 rounded-full font-medium"
                     >
                         <Calendar className="h-4 w-4" /> Book Appointment
-                    </a>
+                    </button>
                 </div>
             )}
         </header>

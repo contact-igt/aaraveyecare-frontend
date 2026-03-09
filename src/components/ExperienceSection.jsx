@@ -1,6 +1,8 @@
 import React from 'react';
+import { useModal } from '../context/ModalContext';
 
 export default function ExperienceSection() {
+    const { openPopup } = useModal();
     return (
         <section className="relative pb-20">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -18,6 +20,14 @@ export default function ExperienceSection() {
                         macular degeneration treatments, retinal detachment interventions, glaucoma services, custom contact lenses,
                         stylish spectacle dispensing, and low vision clinic options.
                     </p>
+                    <div className="pt-4">
+                        <button
+                            onClick={openPopup}
+                            className="bg-teal-600 hover:bg-teal-700 text-white font-bold py-4 px-12 rounded-full shadow-lg transition-all duration-300 hover:scale-105"
+                        >
+                            Book Your Consult
+                        </button>
+                    </div>
                 </div>
             </div>
         </section>

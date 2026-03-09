@@ -1,5 +1,6 @@
 import React from 'react';
 import { Eye, Brain, Zap, MonitorSpeaker, Contact, ArrowRight } from 'lucide-react';
+import { useModal } from '../context/ModalContext';
 
 const services = [
     {
@@ -30,6 +31,7 @@ const services = [
 ];
 
 export default function ServicesGrid() {
+    const { openPopup } = useModal();
     return (
         <section className="py-16 bg-gray-50">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -42,7 +44,7 @@ export default function ServicesGrid() {
 
                 <div className="flex flex-wrap justify-center gap-6">
                     {services.map((service, index) => (
-                        <div key={index} className="group bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:bg-teal-600 hover:border-teal-600 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 cursor-pointer w-full md:w-[calc(50%-1.5rem)] lg:w-[calc(33.333%-1rem)]">
+                        <div key={index} onClick={openPopup} className="group bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:bg-teal-600 hover:border-teal-600 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 cursor-pointer w-full md:w-[calc(50%-1.5rem)] lg:w-[calc(33.333%-1rem)]">
                             <div className="bg-teal-50 group-hover:bg-teal-500 w-12 h-12 rounded-lg flex items-center justify-center mb-6 transition-colors duration-300">
                                 <span className="text-teal-500 group-hover:text-white transition-colors duration-300">{service.icon}</span>
                             </div>
@@ -54,13 +56,13 @@ export default function ServicesGrid() {
 
                 {/* CTA */}
                 <div className="text-center mt-12">
-                    <a
-                        href="#hero"
+                    <button
+                        onClick={openPopup}
                         className="inline-flex items-center gap-2 bg-teal-600 hover:bg-teal-700 text-white font-semibold px-8 py-3.5 rounded-full shadow-md transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5"
                     >
                         Book Appointment
                         <ArrowRight className="h-4 w-4" />
-                    </a>
+                    </button>
                 </div>
             </div>
         </section>
