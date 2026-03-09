@@ -4,7 +4,7 @@ import { Loader2, ChevronDown, X } from 'lucide-react';
 import { useModal } from '../context/ModalContext';
 
 export default function PopupForm() {
-    const { isPopupOpen, closePopup } = useModal();
+    const { isPopupOpen, closePopup, popupType } = useModal();
     const [isSubmitting, setIsSubmitting] = useState(false);
 
     const {
@@ -48,6 +48,7 @@ export default function PopupForm() {
                 service: data.service,
                 ip_address: ip,
                 utm_source: localStorage.getItem("utm_source") || "Direct",
+                source: popupType === 'cashless' ? 'Cashless Eligibility Form' : 'Quick Booking Popup',
                 message: data.message || "",
             };
 
@@ -96,13 +97,15 @@ export default function PopupForm() {
 
                 <div className="p-8 md:p-10">
                     <span className="text-teal-600 font-semibold tracking-wider text-sm uppercase mb-3 flex items-center gap-2">
-                        <span className="w-2 h-2 bg-teal-500 rounded-full"></span> Quick Booking
+                        <span className="w-2 h-2 bg-teal-500 rounded-full"></span> {popupType === 'cashless' ? 'Eligibility Check' : 'Quick Booking'}
                     </span>
                     <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2 leading-tight">
-                        Schedule Your Visit
+                        {popupType === 'cashless' ? 'Check Cashless Eligibility' : 'Schedule Your Visit'}
                     </h2>
                     <p className="text-gray-500 mb-8 text-sm leading-relaxed">
-                        Fill in the details below and our team will get back to you shortly.
+                        {popupType === 'cashless'
+                            ? 'Fill in the details below and we will help you check your insurance coverage.'
+                            : 'Fill in the details below and our team will get back to you shortly.'}
                     </p>
 
                     <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
@@ -135,13 +138,13 @@ export default function PopupForm() {
                         </div>
 
                         <div className="space-y-1">
-                            <label className="block text-xs font-semibold text-gray-500">Select Service</label>
+                            <label className="block text-xs font-semibold text-gray-500">{popupType === 'cashless' ? 'Select Treatment' : 'Select Service'}</label>
                             <div className="relative">
                                 <select
                                     {...register("service", { required: "Please select a service" })}
                                     className={`w-full bg-gray-50 border-0 rounded-xl px-4 py-3.5 focus:outline-none focus:ring-2 focus:ring-teal-500 text-gray-500 appearance-none transition-all ${errors.service ? 'ring-2 ring-red-500' : ''}`}
                                 >
-                                    <option value="">Choose a service...</option>
+                                    <option value="">{popupType === 'cashless' ? 'Choose a treatment...' : 'Choose a service...'}</option>
                                     <option value="General Ophthalmology">General Ophthalmology</option>
                                     <option value="Pediatric Ophthalmology">Pediatric Ophthalmology</option>
                                     <option value="Retina Eye Care">Retina Eye Care</option>
@@ -169,7 +172,7 @@ export default function PopupForm() {
                                         <Loader2 className="w-5 h-5 animate-spin" />
                                         Processing...
                                     </>
-                                ) : 'Book Appointment Now'}
+                                ) : (popupType === 'cashless' ? 'Check Eligibility' : 'Book Your Appointment')}
                             </button>
                         </div>
                     </form>

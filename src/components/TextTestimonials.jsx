@@ -102,8 +102,10 @@ export default function TextTestimonials() {
         <section className="py-20 bg-[#eafafa]">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-16">
-                    <h2 className="text-3xl md:text-4xl font-bold text-teal-900">Trusted by 2,50,000+ Patients</h2>
-                    <div className="w-32 h-1 bg-teal-500 mx-auto mt-6 rounded-full opacity-70"></div>
+                    <h2 className="text-3xl md:text-5xl font-bold text-gray-900 leading-tight">
+                        Trusted by <span className="text-teal-600">2,50,000+ Patients</span>
+                    </h2>
+                    <div className="w-24 h-1.5 bg-teal-500 mx-auto mt-6 rounded-full"></div>
                 </div>
 
                 {/* Carousel track */}

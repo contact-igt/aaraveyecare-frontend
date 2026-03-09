@@ -35,9 +35,12 @@ export default function ServicesGrid() {
     return (
         <section className="py-16 bg-gray-50">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="text-center mb-12">
-                    <h2 className="text-3xl md:text-4xl font-bold text-gray-900">Our Services</h2>
-                    <p className="text-gray-500 mt-3 max-w-2xl mx-auto text-sm leading-relaxed">
+                <div className="text-center mb-16">
+                    <h2 className="text-3xl md:text-5xl font-bold text-gray-900 leading-tight">
+                        Our <span className="text-teal-600">Services</span>
+                    </h2>
+                    <div className="w-24 h-1.5 bg-teal-500 mx-auto mt-6 rounded-full"></div>
+                    <p className="text-gray-500 mt-6 max-w-2xl mx-auto text-sm leading-relaxed">
                         From cutting-edge surgical procedures to specialised eye care, Aarav Eye Care delivers world-class treatment across all branches in Mumbai and Maharashtra.
                     </p>
                 </div>

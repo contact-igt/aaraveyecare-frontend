@@ -4,12 +4,19 @@ const ModalContext = createContext();
 
 export const ModalProvider = ({ children }) => {
     const [isPopupOpen, setIsPopupOpen] = useState(false);
+    const [popupType, setPopupType] = useState('default');
 
-    const openPopup = () => setIsPopupOpen(true);
-    const closePopup = () => setIsPopupOpen(false);
+    const openPopup = (type = 'default') => {
+        setPopupType(type);
+        setIsPopupOpen(true);
+    };
+    const closePopup = () => {
+        setIsPopupOpen(false);
+        setPopupType('default');
+    };
 
     return (
-        <ModalContext.Provider value={{ isPopupOpen, openPopup, closePopup }}>
+        <ModalContext.Provider value={{ isPopupOpen, popupType, openPopup, closePopup }}>
             {children}
         </ModalContext.Provider>
     );
