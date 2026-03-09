@@ -174,16 +174,16 @@ export default function HeroSection() {
                                             className={`w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent text-sm text-gray-600 appearance-none bg-white ${errors.service ? 'ring-2 ring-red-500 border-transparent' : ''}`}
                                         >
                                             <option value="">Choose a service...</option>
-                                            <option value="general">General Ophthalmology</option>
-                                            <option value="pediatric">Pediatric Ophthalmology</option>
-                                            <option value="retina">Retina Eye Care</option>
-                                            <option value="glaucoma">Glaucoma Services</option>
-                                            <option value="neuro">Neuro Ophthalmology</option>
-                                            <option value="lasik">Lasik - Specs Removal</option>
-                                            <option value="smile">SMILE - Specs Removal</option>
-                                            <option value="icl">ICL - Specs Removal</option>
-                                            <option value="cataract">Cataract Surgery</option>
-                                            <option value="oculoplasty">Oculoplasty Treatment</option>
+                                            <option value="General Ophthalmology">General Ophthalmology</option>
+                                            <option value="Pediatric Ophthalmology">Pediatric Ophthalmology</option>
+                                            <option value="Retina Eye Care">Retina Eye Care</option>
+                                            <option value="Glaucoma Services">Glaucoma Services</option>
+                                            <option value="Neuro Ophthalmology">Neuro Ophthalmology</option>
+                                            <option value="Lasik - Specs Removal">Lasik - Specs Removal</option>
+                                            <option value="SMILE - Specs Removal">SMILE - Specs Removal</option>
+                                            <option value="ICL - Specs Removal">ICL - Specs Removal</option>
+                                            <option value="Cataract Surgery">Cataract Surgery</option>
+                                            <option value="Oculoplasty Treatment">Oculoplasty Treatment</option>
                                         </select>
                                         <ChevronDown className="absolute right-3 top-3.5 h-4 w-4 text-gray-400 pointer-events-none" />
                                     </div>
