@@ -20,8 +20,8 @@ export default function FaqSection() {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="grid lg:grid-cols-12 gap-12 items-start">
                     <div className="lg:col-span-4 lg:sticky lg:top-32">
-                        <h2 className="text-4xl md:text-5xl font-bold text-teal-900 leading-tight">
-                            Frequently<br />Asked Questions
+                        <h2 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight">
+                            Frequently<br /><span className="text-teal-600">Asked Questions</span>
                         </h2>
                         <div className="w-32 h-1.5 bg-teal-500 mt-6 rounded-full opacity-60"></div>
                     </div>

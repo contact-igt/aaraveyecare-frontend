@@ -4,9 +4,11 @@ export default function WhyUsSection() {
     return (
         <section className="py-20 bg-[#eafafa]">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="text-center mb-12">
-                    <h2 className="text-3xl md:text-4xl font-bold text-teal-900">Why Aarav Eye Care?</h2>
-                    <div className="w-24 h-1 bg-teal-500 mx-auto mt-4 rounded-full"></div>
+                <div className="text-center mb-16">
+                    <h2 className="text-3xl md:text-5xl font-bold text-gray-900 leading-tight">
+                        Why <span className="text-teal-600">Aarav Eye Care?</span>
+                    </h2>
+                    <div className="w-24 h-1.5 bg-teal-500 mx-auto mt-6 rounded-full"></div>
                 </div>
 
                 <div className="grid md:grid-cols-2 gap-10">

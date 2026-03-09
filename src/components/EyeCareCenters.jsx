@@ -41,9 +41,11 @@ export default function EyeCareCenters() {
         <section className="py-20 bg-gray-50 border-t border-gray-100">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-16">
-                    <h2 className="text-3xl md:text-4xl font-bold text-gray-900">Our Eye Care Centers</h2>
-                    <div className="w-24 h-1 bg-teal-500 mx-auto mt-4 rounded-full"></div>
-                    <p className="mt-4 text-gray-600 max-w-2xl mx-auto">
+                    <h2 className="text-3xl md:text-5xl font-bold text-gray-900 leading-tight">
+                        Our <span className="text-teal-600">Eye Care Centers</span>
+                    </h2>
+                    <div className="w-24 h-1.5 bg-teal-500 mx-auto mt-6 rounded-full"></div>
+                    <p className="mt-8 text-gray-500 max-w-2xl mx-auto text-sm leading-relaxed">
                         Visit us at any of our 5 conveniently located, state-of-the-art facilities for world-class eye care services.
                     </p>
                 </div>

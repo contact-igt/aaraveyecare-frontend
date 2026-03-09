@@ -13,6 +13,7 @@ import AppointmentForm from './components/AppointmentForm';
 import Footer from './components/Footer';
 import FloatingActions from './components/FloatingActions';
 import ThankYou from './components/ThankYou';
+import InsuranceSection from './components/InsuranceSection';
 import { ModalProvider } from './context/ModalContext';
 import PopupForm from './components/PopupForm';
 
@@ -30,6 +31,9 @@ function LandingPage() {
 
       {/* 4. Services Grid */}
       <ServicesGrid />
+
+      {/* Insurance Section */}
+      <InsuranceSection />
 
       {/* 7. Eye Care Centers */}
       <EyeCareCenters />

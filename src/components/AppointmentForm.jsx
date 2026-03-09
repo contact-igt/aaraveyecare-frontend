@@ -85,7 +85,7 @@ export default function AppointmentForm() {
                                 <span className="w-2 h-2 bg-teal-500 rounded-full"></span> Book Now
                             </span>
                             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 leading-tight">
-                                Book Your Eye Consultation<br />with Our Specialists
+                                Book Your <span className="text-teal-600">Eye Consultation</span><br />with Our Specialists
                             </h2>
                             <p className="text-gray-600 mb-10 text-sm leading-relaxed max-w-md">
                                 Whether it's a routine checkup, cataract surgery, LASIK, or any other eye concern — our experienced ophthalmologists at Aarav Eye Care are here to guide you with personalised, compassionate care at every step.
