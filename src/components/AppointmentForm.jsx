@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
 import { Loader2, ChevronDown } from 'lucide-react';
+import { fetchVisitorIp, submitAaravLead } from '../utils/submitAaravLead';
 
 export default function AppointmentForm() {
     const [isSubmitting, setIsSubmitting] = useState(false);
-    const navigate = useNavigate();
-
     const {
         register,
         handleSubmit,
@@ -14,60 +12,26 @@ export default function AppointmentForm() {
         formState: { errors }
     } = useForm();
 
-    const handleGoogleSheetForm = async (formData) => {
-        try {
-            const res = await fetch(
-                "https://script.google.com/macros/s/AKfycbzJ7il5zL8lp7XhIcmvSpVYGpVfqiH_J7R3IbGpdQdkmVeAGWwm7LigaasHmVDVGILr/exec",
-                {
-                    method: "POST",
-                    body: formData,
-                }
-            );
-            return true;
-        } catch (err) {
-            console.error("Sheet Error:", err);
-            return false;
-        }
-    };
-
     const onSubmit = async (data) => {
         setIsSubmitting(true);
         try {
-            let ip = "";
-            try {
-                const ipResponse = await fetch("https://api.ipify.org?format=json");
-                const ipData = await ipResponse.json();
-                ip = ipData.ip;
-            } catch (error) {
-                console.warn("IP Fetch failed", error);
-            }
+            const ip = await fetchVisitorIp();
 
-            const formData = {
+            await submitAaravLead({
                 name: data.name,
                 phone: data.phone,
+                mobile_number: data.phone,
                 service: data.service,
                 ip_address: ip,
-                utm_source: localStorage.getItem("utm_source") || "Direct",
-                message: data.message || "",
-            };
-
-            const params = new URLSearchParams();
-            Object.keys(formData).forEach((key) => {
-                const value = formData[key];
-                params.append(key, value !== undefined && value !== null ? String(value) : "");
+                utm_source: localStorage.getItem('utm_source') || 'Direct',
+                message: data.message || '',
             });
 
-            const success = await handleGoogleSheetForm(params);
-
-            if (success) {
-                reset();
-                window.location.href = "/thank-you";
-            } else {
-                alert("Something went wrong. Please try again.");
-            }
+            reset();
+            window.location.href = '/thank-you';
         } catch (err) {
-            console.error("Submission error:", err);
-            alert("An error occurred. Please try again.");
+            console.error('Submission error:', err);
+            alert('An error occurred. Please try again.');
         } finally {
             setIsSubmitting(false);
         }
@@ -79,7 +43,6 @@ export default function AppointmentForm() {
                 <div className="bg-[#f0f8f8] rounded-[2.5rem] overflow-hidden shadow-sm border border-teal-50">
                     <div className="grid lg:grid-cols-2">
 
-                        {/* Form Side */}
                         <div className="p-10 lg:p-16 relative">
                             <span className="text-teal-600 font-semibold tracking-wider text-sm uppercase mb-3 flex items-center gap-2">
                                 <span className="w-2 h-2 bg-teal-500 rounded-full"></span> Book Now
@@ -88,7 +51,7 @@ export default function AppointmentForm() {
                                 Book Your <span className="text-teal-600">Eye Consultation</span><br />with Our Specialists
                             </h2>
                             <p className="text-gray-600 mb-10 text-sm leading-relaxed max-w-md">
-                                Whether it's a routine checkup, cataract surgery, LASIK, or any other eye concern — our experienced ophthalmologists at Aarav Eye Care are here to guide you with personalised, compassionate care at every step.
+                                Whether it's a routine checkup, cataract surgery, LASIK, or any other eye concern - our experienced ophthalmologists at Aarav Eye Care are here to guide you with personalised, compassionate care at every step.
                             </p>
 
                             <form onSubmit={handleSubmit(onSubmit)} className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-5">
@@ -97,7 +60,7 @@ export default function AppointmentForm() {
                                     <input
                                         type="text"
                                         placeholder="Your Name"
-                                        {...register("name", { required: "Name is required" })}
+                                        {...register('name', { required: 'Name is required' })}
                                         className={`w-full bg-white border-0 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-teal-500 shadow-sm ${errors.name ? 'ring-2 ring-red-500' : ''}`}
                                     />
                                     {errors.name && <p className="text-red-500 text-[10px] font-medium">{errors.name.message}</p>}
@@ -107,11 +70,11 @@ export default function AppointmentForm() {
                                     <input
                                         type="text"
                                         placeholder="10-digit Phone Number"
-                                        {...register("phone", {
-                                            required: "Phone number is required",
+                                        {...register('phone', {
+                                            required: 'Phone number is required',
                                             pattern: {
                                                 value: /^[0-9]{10}$/,
-                                                message: "Please enter a valid 10-digit number"
+                                                message: 'Please enter a valid 10-digit number'
                                             }
                                         })}
                                         className={`w-full bg-white border-0 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-teal-500 shadow-sm ${errors.phone ? 'ring-2 ring-red-500' : ''}`}
@@ -122,7 +85,7 @@ export default function AppointmentForm() {
                                     <label className="block text-xs font-semibold text-gray-500">Select Service</label>
                                     <div className="relative">
                                         <select
-                                            {...register("service", { required: "Please select a service" })}
+                                            {...register('service', { required: 'Please select a service' })}
                                             className={`w-full bg-white border-0 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-teal-500 shadow-sm text-gray-500 appearance-none ${errors.service ? 'ring-2 ring-red-500' : ''}`}
                                         >
                                             <option value="">Choose a service...</option>
@@ -158,7 +121,6 @@ export default function AppointmentForm() {
                             </form>
                         </div>
 
-                        {/* Image Side */}
                         <div className="hidden lg:block relative bg-teal-100">
                             <img
                                 src="/assets/contact.webp"
