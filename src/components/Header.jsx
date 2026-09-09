@@ -20,11 +20,11 @@ export default function Header() {
                     <div className="hidden md:flex items-center gap-4">
                         {/* Call Us */}
                         <a
-                            href="tel:+919082217175"
+                            href="tel:+919429692595"
                             className="flex items-center gap-2 border-2 border-teal-500 text-teal-700 hover:bg-teal-50 px-5 py-2.5 rounded-full font-medium transition-all duration-200"
                         >
                             <Phone className="h-4 w-4" />
-                            Call Us &nbsp;<span className="font-bold text-teal-600">+91 90822 17175</span>
+                            Call Us &nbsp;<span className="font-bold text-teal-600">+91 94296 92595</span>
                         </a>
 
                         {/* Book Appointment */}
@@ -39,7 +39,7 @@ export default function Header() {
 
                     {/* Mobile menu button */}
                     <div className="md:hidden flex items-center gap-3">
-                        <a href="tel:+919082217175" className="text-teal-600">
+                        <a href="tel:+919429692595" className="text-teal-600">
                             <Phone className="h-6 w-6" />
                         </a>
                         <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="text-gray-600">
@@ -53,10 +53,10 @@ export default function Header() {
             {isMobileMenuOpen && (
                 <div className="md:hidden bg-white border-t p-4 space-y-3 shadow-lg absolute w-full">
                     <a
-                        href="tel:+919082217175"
+                        href="tel:+919429692595"
                         className="flex items-center gap-2 text-teal-700 font-semibold py-2"
                     >
-                        <Phone className="h-5 w-5" /> +91 90822 17175
+                        <Phone className="h-5 w-5" /> +91 94296 92595
                     </a>
                     <button
                         onClick={() => {
