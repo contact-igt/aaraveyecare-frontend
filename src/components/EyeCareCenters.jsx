@@ -7,31 +7,31 @@ const locations = [
         name: 'Grant Road',
         addr: 'Yash Apartments, 1st Floor, Opp. Cumballa Hill Hospital, A.K. Marg, Kemps Corner, Grant Road (W), Mumbai 400036',
         nearest: 'Grant Road',
-        phone: '+91 90822 17175',
+        phone: '+91 94296 92595',
     },
     {
         name: 'Mira Road',
         addr: 'Shop No. 5, Bhairav Residency, Kanakia Road, Near Cinemax Theatre, Mira Road (E), Mumbai 401107',
         nearest: 'Mira Road',
-        phone: '+91 90822 17175',
+        phone: '+91 94296 92595',
     },
     {
         name: 'Bhiwandi',
         addr: '1st floor, No 278, Old Mumbai-Agra Rd, opp. Sympathy hospital, Dhamankar Naka, Kaneri, Bhiwandi – 421302',
         nearest: 'Kalyan',
-        phone: '+91 90822 17175',
+        phone: '+91 94296 92595',
     },
     {
         name: 'Andheri',
         addr: 'Jyoti Tower, 103, opp. Versova Police station, off New Link Road, Wing B, New LIC Colony, D.N.Nagar, Andheri West, Mumbai 400053',
         nearest: null,
-        phone: '+91 90822 17175',
+        phone: '+91 94296 92595',
     },
     {
         name: 'Lal Baug',
         addr: 'Shop No.1, Shivaram chawl, D.L. Marg, Kalachowki, Lal Baug Naka, Mumbai 400033',
         nearest: null,
-        phone: '+91 90822 17175',
+        phone: '+91 94296 92595',
     },
 ];
 
@@ -108,7 +108,7 @@ export default function EyeCareCenters() {
                         <ArrowRight className="h-4 w-4" />
                     </button>
                     <a
-                        href="tel:+919082217175"
+                        href="tel:+919429692595"
                         className="inline-flex items-center gap-2 border-2 border-teal-600 text-teal-700 hover:bg-teal-600 hover:text-white font-semibold px-8 py-3.5 rounded-full transition-all duration-300 hover:-translate-y-0.5"
                     >
                         <Phone className="h-5 w-5 mr-1" />

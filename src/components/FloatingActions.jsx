@@ -14,7 +14,7 @@ export default function FloatingActions() {
         <>
             {/* 1. Global Floating WhatsApp Icon — Bottom Right */}
             <a
-                href="https://wa.me/919082217175"
+                href="https://wa.me/919429692595"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="fixed bottom-24 right-6 lg:bottom-8 lg:right-8 z-[100] bg-[#25D366] text-white p-3.5 rounded-full shadow-2xl hover:scale-110 active:scale-95 transition-all duration-300 flex items-center justify-center group"
@@ -32,7 +32,7 @@ export default function FloatingActions() {
             {/* 2. Desktop Vertical Sidebar — Fixed Right */}
             <div className="fixed right-0 top-1/2 -translate-y-1/2 hidden lg:flex flex-col gap-2 z-50">
                 <a
-                    href="tel:+919082217175"
+                    href="tel:+919429692595"
                     className="bg-teal-500 text-white p-3 rounded-l-lg shadow-lg hover:bg-teal-600 hover:pr-5 transition-all duration-300 flex justify-center"
                     aria-label="Call Us"
                 >
@@ -59,7 +59,7 @@ export default function FloatingActions() {
                         Consult
                     </button>
                     <a
-                        href="tel:+919082217175"
+                        href="tel:+919429692595"
                         className="flex-1 bg-red-600 text-white py-3.5 rounded-xl font-bold flex items-center justify-center gap-2 shadow-lg active:scale-95 transition-transform"
                     >
                         <Phone className="h-5 w-5" />

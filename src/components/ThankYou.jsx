@@ -104,11 +104,11 @@ export default function ThankYou() {
                                     <h4 className="text-xl font-bold mb-2">Need Immediate Assistance?</h4>
                                     <p className="text-teal-100 text-sm mb-6 opacity-80">Call our direct helpline for emergency cases or immediate help.</p>
                                     <a
-                                        href="tel:+919082217175"
+                                        href="tel:+919429692595"
                                         className="inline-flex items-center justify-center gap-3 bg-white text-teal-900 font-extrabold py-4 px-8 rounded-2xl w-full hover:bg-teal-50 transition-colors shadow-lg active:scale-95"
                                     >
                                         <Phone className="w-5 h-5" />
-                                        +91 90822 17175
+                                        +91 94296 92595
                                     </a>
                                 </div>
                             </div>
