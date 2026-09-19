@@ -25,33 +25,40 @@ const submitToPrimaryApi = async ({
   service,
   ip_address,
   utm_source,
+  message,
+  source,
 }) => {
+  const payload = {
+    name,
+    mobile_number: mobile_number || phone || "",
+    service,
+    ip_address: ip_address || "",
+    utm_source: utm_source || "Direct",
+  };
+
+  if (message) payload.message = message;
+  if (source) payload.source = source;
+
   const response = await fetch(API_LEAD_ENDPOINT, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
       "X-Client-Key": CLIENT_KEY,
     },
-    body: JSON.stringify({
-      name,
-      mobile_number: mobile_number || phone || "",
-      service,
-      ip_address: ip_address || "",
-      utm_source: utm_source || "Direct",
-    }),
+    body: JSON.stringify(payload),
   });
 
   if (!response.ok) {
-    let message = "Lead submission failed";
+    let errorMessage = "Lead submission failed";
 
     try {
-      const payload = await response.json();
-      message = payload?.message || message;
+      const responsePayload = await response.json();
+      errorMessage = responsePayload?.message || errorMessage;
     } catch (error) {
       // Keep the generic message when the server does not return JSON.
     }
 
-    throw new Error(message);
+    throw new Error(errorMessage);
   }
 
   try {
