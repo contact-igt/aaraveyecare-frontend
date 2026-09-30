@@ -16,6 +16,8 @@ import ThankYou from './components/ThankYou';
 import InsuranceSection from './components/InsuranceSection';
 import { ModalProvider } from './context/ModalContext';
 import PopupForm from './components/PopupForm';
+import DeveloperTestMode from './components/DeveloperTestMode';
+import { useClarityEnvironment } from './hooks/useClarityEnvironment';
 
 function LandingPage() {
   return (
@@ -51,6 +53,9 @@ function LandingPage() {
 }
 
 export default function App() {
+  // Runs once per application load, after browser APIs and Clarity are available.
+  useClarityEnvironment();
+
   return (
     <ModalProvider>
       <BrowserRouter>
@@ -61,6 +66,8 @@ export default function App() {
           <Routes>
             <Route path="/" element={<LandingPage />} />
             <Route path="/thank-you" element={<ThankYou />} />
+            {/* Intentionally omitted from navigation; developers can visit /dev directly. */}
+            <Route path="/dev" element={<DeveloperTestMode />} />
           </Routes>
 
           {/* 11. Footer */}

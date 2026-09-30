@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { CheckCircle2, Home, Phone, ArrowRight, Youtube, ShieldCheck, Users, CalendarCheck2 } from 'lucide-react';
 
 export default function ThankYou() {
     const navigate = useNavigate();
+
+    // A form can be submitted while the visitor is near the bottom of the page.
+    // Always show the success message from its beginning after navigation.
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
 
     return (
         <div className="min-h-screen bg-[#f8fdfe] flex flex-col items-center justify-start px-4 py-10 md:py-16 relative overflow-hidden">
